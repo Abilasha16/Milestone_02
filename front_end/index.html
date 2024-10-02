@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <style>
+        /* Styling for the grid layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .grid-item {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .grid-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <form id="bikeForm">
+        <input type="text" id="registerNumber" placeholder="Register Number" required />
+        <input type="text" id="brand" placeholder="Brand" required />
+        <input type="text" id="model" placeholder="Model" required />
+        <input type="text" id="category" placeholder="Category" required />
+        <input type="file" id="imageFiles" multiple required />
+        <input type="checkbox" id="availabilityStatus" /> Available
+        <button type="submit">Add Bike</button>
+    </form>
+
+
+    <h1>Motorbike Inventory</h1>
+    <div class="grid-container" id="motorbikeGrid"></div>
+
+
+<script src="script.js"></script>    
+
+<script>
+    // async function fetchMotorbikeData() {
+    //     const response = await fetch("http://localhost:5205/api/Motorbike/GetAll");
+    //     const motorbikes = await response.json();
+
+    //     const gridContainer = document.getElementById('motorbikeGrid');
+
+    //     gridContainer.innerHTML = '';
+
+    //     motorbikes.forEach(motorbike => {
+    //         const gridItem = document.createElement('div');
+    //         gridItem.classList.add('grid-item');
+
+    //         const imageUrl = `http://localhost:5205${motorbike.imageUrl}`; 
+
+    //         gridItem.innerHTML = `
+    //             <img src="${imageUrl}" alt="${motorbike.model}" />
+    //             <h3>${motorbike.brand} - ${motorbike.model}</h3>
+    //             <p>Category: ${motorbike.category}</p>
+    //             <p>Register Number: ${motorbike.registerNumber}</p>
+    //             <p>Status: ${motorbike.availabilityStatus}</p>
+    //         `;
+
+    //         gridContainer.appendChild(gridItem);
+    //     });
+    // }
+
+    // fetchMotorbikeData();
+
+    async function fetchMotorbikeData() {
+    const response = await fetch("http://localhost:5205/api/Motorbike/GetAll");
+    const motorbikes = await response.json();
+
+    const gridContainer = document.getElementById('motorbikeGrid');
+    gridContainer.innerHTML = '';
+
+    motorbikes.forEach(motorbike => {
+        const gridItem = document.createElement('div');
+        gridItem.classList.add('grid-item');
+
+        // Split the imageUrl string into an array of image URLs (in case of multiple images)
+        const imageUrls = motorbike.imageUrl.split(',');
+
+        // Create an HTML string to include all images
+        let imagesHtml = '';
+        imageUrls.forEach(url => {
+            const fullUrl = `http://localhost:5205${url}`.trim(); // Ensure there are no spaces
+            imagesHtml += `<img src="${fullUrl}" alt="${motorbike.model}" style="max-width: 100px; margin-right: 10px;" />`;
+        });
+
+        // Add all images and motorbike info to the grid item
+        gridItem.innerHTML = `
+            <div>${imagesHtml}</div>
+            <h3>${motorbike.brand} - ${motorbike.model}</h3>
+            <p>Category: ${motorbike.category}</p>
+            <p>Register Number: ${motorbike.registerNumber}</p>
+            <p>Status: ${motorbike.availabilityStatus}</p>
+        `;
+
+        gridContainer.appendChild(gridItem);
+    });
+}
+//Get6Bikes
+// async function fetch6MotorbikeData() {
+//     const response = await fetch("http://localhost:5205/api/Motorbike/Get6Bikes");
+//     const motorbikes = await response.json();
+
+//     const gridContainer = document.getElementById('motorbikeGrid');
+//     gridContainer.innerHTML = '';
+
+//     motorbikes.forEach(motorbike => {
+//         const gridItem = document.createElement('div');
+//         gridItem.classList.add('grid-item');
+
+//         // Split the imageUrl string into an array of image URLs (in case of multiple images)
+//         const imageUrls = motorbike.imageUrl.split(',');
+
+//         // Create an HTML string to include all images
+//         let imagesHtml = '';
+//         imageUrls.forEach(url => {
+//             const fullUrl = `http://localhost:5205${url}`.trim(); // Ensure there are no spaces
+//             imagesHtml += `<img src="${fullUrl}" alt="${motorbike.model}" style="max-width: 100px; margin-right: 10px;" />`;
+//         });
+
+//         // Add all images and motorbike info to the grid item
+//         gridItem.innerHTML = `
+//             <div>${imagesHtml}</div>
+//             <h3>${motorbike.brand} - ${motorbike.model}</h3>
+//             <p>Category: ${motorbike.category}</p>
+//             <p>Register Number: ${motorbike.registerNumber}</p>
+//             <p>Status: ${motorbike.availabilityStatus}</p>
+//         `;
+
+//         gridContainer.appendChild(gridItem);
+//     });
+// }
+
+fetchMotorbikeData();
+fetch6MotorbikeData();
+
+</script>
+</body>
+</html>
+
+

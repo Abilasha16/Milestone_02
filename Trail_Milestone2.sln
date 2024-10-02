@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trail_Milestone2", "Trail_Milestone2\Trail_Milestone2.csproj", "{7593E2BD-56C1-4C37-913A-CBA0DCB11749}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7593E2BD-56C1-4C37-913A-CBA0DCB11749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7593E2BD-56C1-4C37-913A-CBA0DCB11749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7593E2BD-56C1-4C37-913A-CBA0DCB11749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7593E2BD-56C1-4C37-913A-CBA0DCB11749}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7B99B64-7A89-43D7-BA43-1E20D637732B}
+	EndGlobalSection
+EndGlobal

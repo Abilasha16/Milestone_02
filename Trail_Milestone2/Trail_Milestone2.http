@@ -1,0 +1,6 @@
+@Trail_Milestone2_HostAddress = http://localhost:5205
+
+GET {{Trail_Milestone2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

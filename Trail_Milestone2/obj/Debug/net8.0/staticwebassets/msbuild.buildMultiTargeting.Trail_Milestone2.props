@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Trail_Milestone2.props" />
+</Project>
