@@ -19,11 +19,15 @@ namespace Trail_Milestone2.Repo
         {
             using(var connection = new SqlConnection(_connectionstring))
             {
-                var cmd = new SqlCommand("SELECT * FROM Customer (CustomerId , FullName , NIC , Email , LicenseNumber , PhoneNumber)" +
-                    " VALUES (@id,@name,@nic,@email,@licenseno,@phoneno)" , connection);
+                var cmd = new SqlCommand("insert into Customer (CustomerId , FullName , NIC , Address, Email , LicenseNumber , PhoneNumber) " +
+                    " VALUES (@id,@name,@nic,@address,@email,@licenseno,@phoneno)", connection);
+
+
                 cmd.Parameters.AddWithValue("@id", customer.CustomerId);
                 cmd.Parameters.AddWithValue("@name",customer.FullName);
                 cmd.Parameters.AddWithValue("@nic",customer.NIC);
+                cmd.Parameters.AddWithValue("@address", customer.Address);
+
                 cmd.Parameters.AddWithValue("@email",customer.Email);
                 cmd.Parameters.AddWithValue("@licenseno",customer.LicenseNumber);   
                 cmd.Parameters.AddWithValue("@phoneno",customer.PhoneNumber);

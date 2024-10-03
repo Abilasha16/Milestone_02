@@ -11,6 +11,9 @@ var connectionString = builder.Configuration.GetConnectionString("Connection");
 builder.Services.AddSingleton<IMotorbikeRepo>(provider => new MotorbikeRepo(connectionString));
 builder.Services.AddScoped<IMotorbikeService,MotorbikeService>();
 
+builder.Services.AddSingleton<ICustomer_PageRepo>(prvider => new Customer_PageRepo(connectionString));
+builder.Services.AddScoped<ICustomer_PageService,Customer_PageService>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
