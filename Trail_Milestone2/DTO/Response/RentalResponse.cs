@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Trail_Milestone2.Entity;
 
-namespace Trail_Milestone2.Entity
+namespace Trail_Milestone2.DTO.Response
 {
-    public class Rental
+    public class RentalResponse
     {
         [Key]
         public Guid RentalId { get; set; }
@@ -17,6 +18,5 @@ namespace Trail_Milestone2.Entity
         public DateTime? ReturnDate { get; set; }
         public bool OverdueStatus { get; set; }
         public string RentalStatus { get; set; }
-
     }
 }
