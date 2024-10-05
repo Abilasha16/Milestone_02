@@ -41,5 +41,64 @@ namespace Trail_Milestone2.Service
             };
             return res;
         }
+
+        //public async Task<string> RentBike(RentalRequest rentalRequest)
+        //{
+        //    bool isAvailable = await _repo.IsBikeAvailable(rentalRequest.MotorbikeId);
+        //    if (!isAvailable)
+        //    {
+        //        throw new Exception("Bike is Already Rented");
+        //    }
+
+        //    var data = new Rental()
+        //    {
+        //        RentalId = Guid.NewGuid(),
+        //        MotorbikeId = rentalRequest.MotorbikeId,
+        //        CustomerId = rentalRequest.CustomerId,
+        //        RentalDate = DateTime.Now,
+        //        ReturnDate = rentalRequest.ReturnDate,
+        //        OverdueStatus = rentalRequest.OverdueStatus,
+        //        RentalStatus = rentalRequest.RentalStatus,
+        //    };
+        //    await _repo.RentBike(data);
+        //    var res = new RentalResponse()
+        //    {
+        //        RentalId = data.RentalId,
+        //        MotorbikeId = data.MotorbikeId,
+        //        CustomerId = data.CustomerId,
+        //        RentalDate = DateTime.Now,
+        //        ReturnDate = data.ReturnDate,
+        //        OverdueStatus = data.OverdueStatus,
+        //        RentalStatus = data.RentalStatus,
+        //    };
+        //    return res;
+        //}
+
+        public async Task<string> RentBike(RentalRequest rentalRequest)
+        {
+            // Check if the motorbike is available
+            bool isAvailable = await _repo.IsBikeAvailable(rentalRequest.MotorbikeId);
+            if (!isAvailable)
+            {
+                return "Motorbike is not available for rent.";
+            }
+
+            // Create rental object
+            var rental = new Rental
+            {
+                RentalId = Guid.NewGuid(),
+                MotorbikeId = rentalRequest.MotorbikeId,
+                CustomerId = rentalRequest.CustomerId,
+                RentalDate = rentalRequest.RentalDate,
+                ReturnDate = rentalRequest.ReturnDate,
+                OverdueStatus = rentalRequest.OverdueStatus,
+                RentalStatus = rentalRequest.RentalStatus
+            };
+
+            // Rent the bike
+            await _repo.RentBike(rental);
+
+            return "Bike rented successfully.";
+        }
     }
 }

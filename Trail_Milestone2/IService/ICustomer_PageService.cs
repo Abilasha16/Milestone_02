@@ -6,5 +6,6 @@ namespace Trail_Milestone2.IService
     public interface ICustomer_PageService
     {
         Task<CustomerResponse> CustomerRegister(CustomerReguest customerReguest);
+        Task<string> RentBike(RentalRequest rentalRequest);
     }
 }

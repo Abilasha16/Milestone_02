@@ -26,5 +26,20 @@ namespace Trail_Milestone2.Controllers
             var data = await _service.CustomerRegister(customerReguest);
             return Ok(data);
         }
+
+        [HttpPost("RentBike")]
+        public async Task<IActionResult> RentBike(RentalRequest rentalRequest)
+        {
+            try
+            {
+                var data = await _service.RentBike(rentalRequest);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+        }
     }
 }
