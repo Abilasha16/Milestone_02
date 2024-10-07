@@ -17,128 +17,128 @@ namespace Trail_Milestone2.Service
             _motorbikeRepo = motorbikeRepo;
             _webHostEnvironment = webHost ?? throw new ArgumentNullException(nameof(webHost));
         }
-    //public async Task<MotorbikeResponse> AddBike(MotorbikeReguest motorbikeReguest/*, IFormFile imageFile*/)
-    //{
-    //    Console.WriteLine($"WebRootPath: {_webHostEnvironment.WebRootPath}");
+        //public async Task<MotorbikeResponse> AddBike(MotorbikeReguest motorbikeReguest/*, IFormFile imageFile*/)
+        //{
+        //    Console.WriteLine($"WebRootPath: {_webHostEnvironment.WebRootPath}");
 
-    //    // Check if WebRootPath is null
-    //    if (string.IsNullOrEmpty(_webHostEnvironment.WebRootPath))
-    //    {
-    //        throw new InvalidOperationException("WebRootPath is not set.");
-    //    }
-
-
-    //    var uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "uploads"); if (!Directory.Exists(uploadsDir))
-    //    {
-    //        Directory.CreateDirectory(uploadsDir);
-    //    }
-
-    //    var uniqueFileName = Guid.NewGuid().ToString() + "_" + motorbikeReguest.ImageUrl.FileName;
-    //    var filePath = Path.Combine(uploadsDir, uniqueFileName);
-
-    //    using (var stream = new FileStream(filePath, FileMode.Create))
-    //    {
-    //        await motorbikeReguest.ImageUrl.CopyToAsync(stream);
-    //    }
+        //    // Check if WebRootPath is null
+        //    if (string.IsNullOrEmpty(_webHostEnvironment.WebRootPath))
+        //    {
+        //        throw new InvalidOperationException("WebRootPath is not set.");
+        //    }
 
 
-    //    var data = new MotorBike()
-    //    {
-    //        MotorbikeId = Guid.NewGuid(),
-    //        RegisterNumber = motorbikeReguest.RegisterNumber,
-    //        Brand = motorbikeReguest.Brand,
-    //        Model = motorbikeReguest.Model,
-    //        Category = motorbikeReguest.Category,
-    //        ImageUrl = $"/uploads/{uniqueFileName}",
-    //        AvailabilityStatus = motorbikeReguest.AvailabilityStatus,
+        //    var uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "uploads"); if (!Directory.Exists(uploadsDir))
+        //    {
+        //        Directory.CreateDirectory(uploadsDir);
+        //    }
 
-    //    };
-    //     var addbike = await _motorbikeRepo.AddBike(data);
+        //    var uniqueFileName = Guid.NewGuid().ToString() + "_" + motorbikeReguest.ImageUrl.FileName;
+        //    var filePath = Path.Combine(uploadsDir, uniqueFileName);
 
-    //    var res = new MotorbikeResponse();
-    //    res.MotorbikeId = addbike.MotorbikeId;
-    //    res.RegisterNumber = addbike.RegisterNumber;
-    //    res.Brand = addbike.Brand;
-    //    res.Model = addbike.Model;
-    //    res.Category = addbike.Category;
-    //    res.ImageUrl = addbike.ImageUrl;
-    //    res.AvailabilityStatus = addbike.AvailabilityStatus;
-
-    //    return res;
-
-    //}
+        //    using (var stream = new FileStream(filePath, FileMode.Create))
+        //    {
+        //        await motorbikeReguest.ImageUrl.CopyToAsync(stream);
+        //    }
 
 
-    public async Task<MotorbikeResponse> AddBike(MotorbikeReguest motorbikeReguest)
-    {
-    // register number check
+        //    var data = new MotorBike()
+        //    {
+        //        MotorbikeId = Guid.NewGuid(),
+        //        RegisterNumber = motorbikeReguest.RegisterNumber,
+        //        Brand = motorbikeReguest.Brand,
+        //        Model = motorbikeReguest.Model,
+        //        Category = motorbikeReguest.Category,
+        //        ImageUrl = $"/uploads/{uniqueFileName}",
+        //        AvailabilityStatus = motorbikeReguest.AvailabilityStatus,
+
+        //    };
+        //     var addbike = await _motorbikeRepo.AddBike(data);
+
+        //    var res = new MotorbikeResponse();
+        //    res.MotorbikeId = addbike.MotorbikeId;
+        //    res.RegisterNumber = addbike.RegisterNumber;
+        //    res.Brand = addbike.Brand;
+        //    res.Model = addbike.Model;
+        //    res.Category = addbike.Category;
+        //    res.ImageUrl = addbike.ImageUrl;
+        //    res.AvailabilityStatus = addbike.AvailabilityStatus;
+
+        //    return res;
+
+        //}
+
+
+        public async Task<MotorbikeResponse> AddBike(MotorbikeReguest motorbikeReguest)
+        {
+            // register number check
 
             var registercheck = await _motorbikeRepo.GetRegisterNumber(motorbikeReguest.RegisterNumber);
-            if(registercheck != null)
+            if (registercheck != null)
             {
                 throw new InvalidOperationException("Already a Motorbike this Register number.");
             }
 
-      if (string.IsNullOrEmpty(_webHostEnvironment.WebRootPath))
-      {
-        throw new InvalidOperationException("WebRootPath is not set.");
-      }
+            if (string.IsNullOrEmpty(_webHostEnvironment.WebRootPath))
+            {
+                throw new InvalidOperationException("WebRootPath is not set.");
+            }
 
-      var uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
-      if (!Directory.Exists(uploadsDir))
-      {
-        Directory.CreateDirectory(uploadsDir);
-      }
+            var uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+            if (!Directory.Exists(uploadsDir))
+            {
+                Directory.CreateDirectory(uploadsDir);
+            }
 
-      var imageUrls = new List<string>();
+            var imageUrls = new List<string>();
 
-      // Loop through each image file
-      foreach (var imageFile in motorbikeReguest.ImageUrls)
-      {
-        var uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
-        var filePath = Path.Combine(uploadsDir, uniqueFileName);
+            // Loop through each image file
+            foreach (var imageFile in motorbikeReguest.ImageUrls)
+            {
+                var uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
+                var filePath = Path.Combine(uploadsDir, uniqueFileName);
 
-        using (var stream = new FileStream(filePath, FileMode.Create))
-        {
-          await imageFile.CopyToAsync(stream);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+
+                imageUrls.Add($"/uploads/{uniqueFileName}");
+            }
+
+            var data = new MotorBike()
+            {
+                MotorbikeId = Guid.NewGuid(),
+                RegisterNumber = motorbikeReguest.RegisterNumber,
+                Brand = motorbikeReguest.Brand,
+                Model = motorbikeReguest.Model,
+                Category = motorbikeReguest.Category,
+                ImageUrl = string.Join(",", imageUrls),  // Save as comma-separated string
+                AvailabilityStatus = motorbikeReguest.AvailabilityStatus,
+            };
+
+            var addbike = await _motorbikeRepo.AddBike(data);
+
+            var res = new MotorbikeResponse()
+            {
+                MotorbikeId = addbike.MotorbikeId,
+                RegisterNumber = addbike.RegisterNumber,
+                Brand = addbike.Brand,
+                Model = addbike.Model,
+                Category = addbike.Category,
+                ImageUrl = addbike.ImageUrl,
+                AvailabilityStatus = addbike.AvailabilityStatus,
+            };
+
+            return res;
         }
 
-        imageUrls.Add($"/uploads/{uniqueFileName}");
-      }
 
-      var data = new MotorBike()
-      {
-        MotorbikeId = Guid.NewGuid(),
-        RegisterNumber = motorbikeReguest.RegisterNumber,
-        Brand = motorbikeReguest.Brand,
-        Model = motorbikeReguest.Model,
-        Category = motorbikeReguest.Category,
-        ImageUrl = string.Join(",", imageUrls),  // Save as comma-separated string
-        AvailabilityStatus = motorbikeReguest.AvailabilityStatus,
-      };
-
-      var addbike = await _motorbikeRepo.AddBike(data);
-
-      var res = new MotorbikeResponse()
-      {
-        MotorbikeId = addbike.MotorbikeId,
-        RegisterNumber = addbike.RegisterNumber,
-        Brand = addbike.Brand,
-        Model = addbike.Model,
-        Category = addbike.Category,
-        ImageUrl = addbike.ImageUrl,
-        AvailabilityStatus = addbike.AvailabilityStatus,
-      };
-
-      return res;
-    }
-
-
-    public async Task<MotorbikeResponse> EditBike(Guid id,MotorbikeReguest motorbikeReguest)
+        public async Task<MotorbikeResponse> EditBike(Guid id, MotorbikeReguest motorbikeReguest)
         {
             var existingBike = await _motorbikeRepo.EditBike(id);
 
-            if (existingBike == null) 
+            if (existingBike == null)
             {
                 return null;
             }
@@ -151,7 +151,7 @@ namespace Trail_Milestone2.Service
 
             var updatebike = await _motorbikeRepo.UpdateBike(existingBike);
 
-            if(updatebike == null)
+            if (updatebike == null)
             {
                 return null;
             }
@@ -184,7 +184,7 @@ namespace Trail_Milestone2.Service
                     Model = bike.Model,
                     Category = bike.Category,
                     ImageUrl = bike.ImageUrl,
-                    AvailabilityStatus= bike.AvailabilityStatus
+                    AvailabilityStatus = bike.AvailabilityStatus
                 };
                 response.Add(res);
             }
@@ -216,7 +216,7 @@ namespace Trail_Milestone2.Service
                 Brand = data.Brand,
                 Model = data.Model,
                 Category = data.Category,
-                ImageUrl= data.ImageUrl,
+                ImageUrl = data.ImageUrl,
                 AvailabilityStatus = data.AvailabilityStatus
             };
             return response;
@@ -246,5 +246,5 @@ namespace Trail_Milestone2.Service
         }
     }
 
-    
+
 }

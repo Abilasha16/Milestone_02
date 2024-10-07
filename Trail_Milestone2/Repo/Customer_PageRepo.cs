@@ -19,15 +19,13 @@ namespace Trail_Milestone2.Repo
         {
             using(var connection = new SqlConnection(_connectionstring))
             {
-                var cmd = new SqlCommand("insert into Customer (CustomerId , FullName , NIC , Address, Email , LicenseNumber , PhoneNumber) " +
-                    " VALUES (@id,@name,@nic,@address,@email,@licenseno,@phoneno)", connection);
+                var cmd = new SqlCommand("insert into Customer (CustomerId , FullName , NIC , Email , LicenseNumber , PhoneNumber) " +
+                    " VALUES (@id,@name,@nic,@email,@licenseno,@phoneno)", connection);
 
 
                 cmd.Parameters.AddWithValue("@id", customer.CustomerId);
                 cmd.Parameters.AddWithValue("@name",customer.FullName);
                 cmd.Parameters.AddWithValue("@nic",customer.NIC);
-                cmd.Parameters.AddWithValue("@address", customer.Address);
-
                 cmd.Parameters.AddWithValue("@email",customer.Email);
                 cmd.Parameters.AddWithValue("@licenseno",customer.LicenseNumber);   
                 cmd.Parameters.AddWithValue("@phoneno",customer.PhoneNumber);
@@ -45,23 +43,42 @@ namespace Trail_Milestone2.Repo
             using(var connection =new SqlConnection(_connectionstring))
             {
                 await connection.OpenAsync();
-                var cmd = new SqlCommand("SELECT AvailabilityStatus FROM Motorbike WHERE MotorbikeId = @motorbikeid)",connection);
+                var cmd = new SqlCommand("SELECT AvailabilityStatus FROM Motorbike WHERE MotorbikeId = @motorbikeid",connection);
                 cmd.Parameters.AddWithValue("@motorbikeid",motorbikeid);
 
                 var availabilitystatus = await cmd.ExecuteScalarAsync();
-                return availabilitystatus == "Available";
+                return availabilitystatus?.ToString() == "Available";
             }
         }
+
+        //Optional
+        public async Task UpdateBikeStatus(Guid motorbikeid, string status)
+        {
+            using (var connection = new SqlConnection(_connectionstring))
+            {
+                await connection.OpenAsync();
+                var cmd = new SqlCommand("UPDATE Motorbike SET AvailabilityStatus = @status WHERE MotorbikeId = @motorbikeid", connection);
+                cmd.Parameters.AddWithValue("@status", status);
+                cmd.Parameters.AddWithValue("@motorbikeid", motorbikeid);
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
 
 
         //Rent bike
 
         public async Task<Rental> RentBike(Rental rental)
         {
-            using(var connection = new SqlConnection(_connectionstring))
+           
+
+            using (var connection = new SqlConnection(_connectionstring))
             {
+                await connection.OpenAsync();
+
                 var cmd = new SqlCommand("INSERT INTO Rental(RentalId,MotorbikeId,CustomerId,RentalDate,ReturnDate,OverdueStatus,RentalStatus) " +
-                    "VALUES (@rentalid,@bikeid,@customerid,@rentaldate,@returndate,@overdue,@rentalstatus);UPDATE Motorbike AvailabilityStatus = 'Unavailable' where MotorbikeId = @motorbikeid", connection);
+                    "VALUES (@rentalid,@bikeid,@customerid,@rentaldate,@returndate,@overdue,@rentalstatus)",connection);
 
                 cmd.Parameters.AddWithValue("@rentalid", rental.RentalId);
                 cmd.Parameters.AddWithValue("@bikeid", rental.MotorbikeId);
@@ -73,6 +90,8 @@ namespace Trail_Milestone2.Repo
 
                 await cmd.ExecuteNonQueryAsync();
             }
+           
+
             return rental;
         }
     }
