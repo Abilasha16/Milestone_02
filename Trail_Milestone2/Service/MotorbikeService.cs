@@ -155,7 +155,6 @@ namespace Trail_Milestone2.Service
             {
                 return null;
             }
-
             var res = new MotorbikeResponse()
             {
                 MotorbikeId = updatebike.MotorbikeId,
