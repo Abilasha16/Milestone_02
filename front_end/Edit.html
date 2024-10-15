@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Motorbike</title>
+</head>
+<body>
+
+    <h1>Edit Motorbike Details</h1>
+    <form id="editBikeForm" enctype="multipart/form-data">
+        <label for="motorbikeId">Motorbike ID:</label>
+        <input type="text" id="motorbikeId" name="motorbikeId" placeholder="Enter Motorbike ID" required><br><br>
+
+        <label for="registerNumber">Register Number:</label>
+        <input type="text" id="registerNumber" name="registerNumber" placeholder="Enter Register Number" required><br><br>
+
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" placeholder="Enter Brand" required><br><br>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" placeholder="Enter Model" required><br><br>
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" placeholder="Enter Category" required><br><br>
+
+        <label for="availabilityStatus">Available:</label>
+        <select id="availabilityStatus" name="availabilityStatus">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br><br>
+
+        <label for="images">Upload Images:</label>
+        <input type="file" id="images" name="images" multiple><br><br>
+
+        <button type="submit">Update Motorbike</button>
+    </form>
+
+    <script>
+        document.getElementById('editBikeForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            const motorbikeId = document.getElementById('motorbikeId').value;
+            const formData = new FormData();
+
+            formData.append('RegisterNumber', document.getElementById('registerNumber').value);
+            formData.append('Brand', document.getElementById('brand').value);
+            formData.append('Model', document.getElementById('model').value);
+            formData.append('Category', document.getElementById('category').value);
+            formData.append('AvailabilityStatus', document.getElementById('availabilityStatus').value === 'true');
+
+            // Append multiple files (images)
+            const images = document.getElementById('images').files;
+            for (let i = 0; i < images.length; i++) {
+                formData.append('ImageUrls', images[i]); // 'ImageUrls' matches the IFormFile list in your backend
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5205/api/Motorbike/EditBike?id=${motorbikeId}`, {
+                    method: 'PUT',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert("Motorbike updated successfully!");
+                    console.log("Motorbike updated:", data);
+                } else {
+                    console.error("Failed to update motorbike:", response.statusText);
+                    alert("Failed to update motorbike.");
+                }
+            } catch (error) {
+                console.error("Error occurred while updating motorbike:", error);
+                alert("Error occurred while updating motorbike.");
+            }
+        });
+    </script>
+
+</body>
+</html>

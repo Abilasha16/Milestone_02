@@ -162,7 +162,7 @@ namespace Trail_Milestone2.Service
                 Brand = updatebike.Brand,
                 Model = updatebike.Model,
                 Category = updatebike.Category,
-                //ImageUrl = updatebike.ImageUrl,
+                ImageUrl = updatebike.ImageUrl,
                 AvailabilityStatus = updatebike.AvailabilityStatus,
             };
             return res;

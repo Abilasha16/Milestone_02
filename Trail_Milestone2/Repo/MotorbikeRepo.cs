@@ -86,7 +86,7 @@ namespace Trail_Milestone2.Repo
                             Model = command2.GetString(3),
                             Category = command2.GetString(4),
                             ImageUrl = command2.GetString(5),
-                            AvailabilityStatus = command2.GetBoolean(6)
+                            AvailabilityStatus = Convert.ToBoolean(command2["AvailabilityStatus"])
                         };
                     }
                 }

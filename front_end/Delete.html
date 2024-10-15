@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Motorbike</title>
+</head>
+<body>
+
+    <h1>Delete Motorbike</h1>
+    <form id="deleteBikeForm">
+        <label for="motorbikeId">Motorbike ID:</label>
+        <input type="text" id="motorbikeId" name="motorbikeId" placeholder="Enter Motorbike ID" required><br><br>
+        <button type="submit">Delete Motorbike</button>
+    </form>
+
+    <script>
+        document.getElementById('deleteBikeForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+
+            const motorbikeId = document.getElementById('motorbikeId').value;
+
+            try {
+                const response = await fetch(`http://localhost:5205/api/Motorbike/DeleteBike?id=${motorbikeId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert("Motorbike deleted successfully!");
+                    console.log("Motorbike deleted:", data);
+                } else {
+                    console.error("Failed to delete motorbike:", response.statusText);
+                    alert("Failed to delete motorbike. Motorbike may not exist.");
+                }
+            } catch (error) {
+                console.error("Error occurred while deleting motorbike:", error);
+                alert("Error occurred while deleting motorbike.");
+            }
+        });
+    </script>
+
+</body>
+</html>
