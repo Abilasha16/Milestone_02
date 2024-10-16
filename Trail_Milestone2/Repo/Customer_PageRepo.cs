@@ -94,5 +94,51 @@ namespace Trail_Milestone2.Repo
 
             return rental;
         }
+
+        //Overdue
+        public List<Rental> GetAndMarkOverdueRentals()
+        {
+            var overdueRentals = new List<Rental>();
+
+            using (var connection = new SqlConnection(_connectionstring))
+            {
+                string query = "SELECT * FROM Rental WHERE ReturnDate IS NULL AND DATEDIFF(hour, RentalDate, GETDATE()) > 24";
+
+                string updateQuery = "UPDATE Rental SET RentalStatus = 'Overdue', OverdueStatus = 1 WHERE RentalId = @RentalId";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var rental = new Rental
+                            {
+                                RentalId = (Guid)reader["RentalId"],
+                                MotorbikeId = (Guid)reader["MotorbikeId"],
+                                CustomerId = (Guid)reader["CustomerId"],
+                                RentalDate = (DateTime)reader["RentalDate"],
+                                ReturnDate = reader["ReturnDate"] as DateTime?,
+                                OverdueStatus = true,
+                                RentalStatus = "Overdue" // Automatically mark as overdue
+                            };
+                            overdueRentals.Add(rental);
+
+                            // Update the status to 'Overdue' in the database
+                            using (var updateCommand = new SqlCommand(updateQuery, connection))
+                            {
+                                updateCommand.Parameters.AddWithValue("@RentalId", rental.RentalId);
+                                updateCommand.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+            }
+
+            return overdueRentals;
+        }
+
+
     }
 }

@@ -41,5 +41,17 @@ namespace Trail_Milestone2.Controllers
             }
             
         }
+
+        [HttpGet("OverdueRentals")]
+        public IActionResult GetAndMarkOverdueRentals()
+        {
+            var overdueRentals = _service.GetAndMarkOverdueRentals();
+            if (overdueRentals == null || !overdueRentals.Any())
+            {
+                return NotFound("No overdue rentals found.");
+            }
+            return Ok(overdueRentals);
+        }
+
     }
 }

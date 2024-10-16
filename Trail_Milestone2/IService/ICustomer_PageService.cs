@@ -1,5 +1,6 @@
 ﻿using Trail_Milestone2.DTO.Reguest;
 using Trail_Milestone2.DTO.Response;
+using Trail_Milestone2.Entity;
 
 namespace Trail_Milestone2.IService
 {
@@ -7,5 +8,6 @@ namespace Trail_Milestone2.IService
     {
         Task<CustomerResponse> CustomerRegister(CustomerReguest customerReguest);
         Task<RentalResponse> RentBike(RentalRequest rentalRequest);
+        List<Rental> GetAndMarkOverdueRentals();
     }
 }

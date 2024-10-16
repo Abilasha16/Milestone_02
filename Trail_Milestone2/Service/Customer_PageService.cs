@@ -101,5 +101,11 @@ namespace Trail_Milestone2.Service
 
         //    return "Bike rented successfully.";
         //}
+
+        public List<Rental> GetAndMarkOverdueRentals()
+        {
+            return _repo.GetAndMarkOverdueRentals();
+        }
+
     }
 }

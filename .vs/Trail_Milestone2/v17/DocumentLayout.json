@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\service\\customer_pageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\service\\customer_pageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\repo\\customer_pagerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\repo\\customer_pagerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\service\\motorbikeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\service\\motorbikeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\controllers\\customer_pagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\controllers\\customer_pagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\repo\\motorbikerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\repo\\motorbikerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\iservice\\icustomer_pageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\iservice\\icustomer_pageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\controllers\\motorbikecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\controllers\\motorbikecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\service\\customer_pageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\service\\customer_pageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|c:\\users\\ut01211\\desktop\\ms2\\milestone_02\\trail_milestone2\\irepo\\icustomer_pagerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7593E2BD-56C1-4C37-913A-CBA0DCB11749}|Trail_Milestone2\\Trail_Milestone2.csproj|solutionrelative:trail_milestone2\\irepo\\icustomer_pagerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "Customer_PageController.cs",
+              "DocumentMoniker": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Controllers\\Customer_PageController.cs",
+              "RelativeDocumentMoniker": "Trail_Milestone2\\Controllers\\Customer_PageController.cs",
+              "ToolTip": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Controllers\\Customer_PageController.cs",
+              "RelativeToolTip": "Trail_Milestone2\\Controllers\\Customer_PageController.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAcwC8AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T09:38:45.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ICustomer_PageService.cs",
+              "DocumentMoniker": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\IService\\ICustomer_PageService.cs",
+              "RelativeDocumentMoniker": "Trail_Milestone2\\IService\\ICustomer_PageService.cs",
+              "ToolTip": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\IService\\ICustomer_PageService.cs",
+              "RelativeToolTip": "Trail_Milestone2\\IService\\ICustomer_PageService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T09:38:36.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ICustomer_PageRepo.cs",
+              "DocumentMoniker": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\IRepo\\ICustomer_PageRepo.cs",
+              "RelativeDocumentMoniker": "Trail_Milestone2\\IRepo\\ICustomer_PageRepo.cs",
+              "ToolTip": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\IRepo\\ICustomer_PageRepo.cs",
+              "RelativeToolTip": "Trail_Milestone2\\IRepo\\ICustomer_PageRepo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T09:38:29.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Customer_PageService.cs",
               "DocumentMoniker": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Service\\Customer_PageService.cs",
               "RelativeDocumentMoniker": "Trail_Milestone2\\Service\\Customer_PageService.cs",
               "ToolTip": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Service\\Customer_PageService.cs",
               "RelativeToolTip": "Trail_Milestone2\\Service\\Customer_PageService.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAowAAAAAAAAAAA",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAwwGgAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T05:21:31.178Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Customer_PageRepo.cs",
               "DocumentMoniker": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Repo\\Customer_PageRepo.cs",
               "RelativeDocumentMoniker": "Trail_Milestone2\\Repo\\Customer_PageRepo.cs",
               "ToolTip": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Repo\\Customer_PageRepo.cs",
               "RelativeToolTip": "Trail_Milestone2\\Repo\\Customer_PageRepo.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "ViewState": "AQIAAHAAAAAAAAAAAAAQwGIAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T05:21:13.973Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MotorbikeController.cs",
-              "DocumentMoniker": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Controllers\\MotorbikeController.cs",
-              "RelativeDocumentMoniker": "Trail_Milestone2\\Controllers\\MotorbikeController.cs",
-              "ToolTip": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Controllers\\MotorbikeController.cs",
-              "RelativeToolTip": "Trail_Milestone2\\Controllers\\MotorbikeController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAA1wCwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T04:28:01.049Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MotorbikeService.cs",
-              "DocumentMoniker": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Service\\MotorbikeService.cs",
-              "RelativeDocumentMoniker": "Trail_Milestone2\\Service\\MotorbikeService.cs",
-              "ToolTip": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Service\\MotorbikeService.cs",
-              "RelativeToolTip": "Trail_Milestone2\\Service\\MotorbikeService.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAiwKQAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T08:56:51.312Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MotorbikeRepo.cs",
-              "DocumentMoniker": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Repo\\MotorbikeRepo.cs",
-              "RelativeDocumentMoniker": "Trail_Milestone2\\Repo\\MotorbikeRepo.cs",
-              "ToolTip": "C:\\Users\\UT01211\\Desktop\\MS2\\Milestone_02\\Trail_Milestone2\\Repo\\MotorbikeRepo.cs",
-              "RelativeToolTip": "Trail_Milestone2\\Repo\\MotorbikeRepo.cs",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAIwF0AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T08:52:25.6Z",
               "EditorCaption": ""
             }
           ]
