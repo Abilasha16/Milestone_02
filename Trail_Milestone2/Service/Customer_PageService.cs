@@ -43,7 +43,7 @@ namespace Trail_Milestone2.Service
         public async Task<RentalResponse> RentBike(RentalRequest rentalRequest)
         {
             bool isAvailable = await _repo.IsBikeAvailable(rentalRequest.MotorbikeId);
-            if (isAvailable)
+            if (!isAvailable)
             {
                 throw new Exception("Bike is Already Rented");
             }
@@ -55,25 +55,25 @@ namespace Trail_Milestone2.Service
                 CustomerId = rentalRequest.CustomerId,
                 RentalDate = DateTime.Now,
                 ReturnDate = rentalRequest.ReturnDate,
-                OverdueStatus = rentalRequest.OverdueStatus,
+                OverdueStatus = false,  // Set initial overdue status to false
                 RentalStatus = rentalRequest.RentalStatus,
-
             };
             await _repo.RentBike(data);
+
             var res = new RentalResponse()
             {
                 RentalId = data.RentalId,
                 MotorbikeId = data.MotorbikeId,
-      
                 CustomerId = data.CustomerId,
-                
-                RentalDate = DateTime.Now,
+                RentalDate = data.RentalDate,
                 ReturnDate = data.ReturnDate,
                 OverdueStatus = data.OverdueStatus,
                 RentalStatus = data.RentalStatus,
             };
+
             return res;
         }
+
 
         //public async Task<string> RentBike(RentalRequest rentalRequest)
         //{
@@ -102,9 +102,20 @@ namespace Trail_Milestone2.Service
         //    return "Bike rented successfully.";
         //}
 
-        public List<Rental> GetAndMarkOverdueRentals()
+       
+        public async Task UpdateOverdueRentals()
         {
-            return _repo.GetAndMarkOverdueRentals();
+            // Step 1: Get rentals that are overdue (more than 24 hours old and OverdueStatus is still false)
+            var overdueRentals = await _repo.GetRentalsToBeMarkedOverdue();
+
+            // Step 2: Loop through each rental and update its OverdueStatus to true
+            foreach (var rental in overdueRentals)
+            {
+                rental.OverdueStatus = true; // Mark the rental as overdue
+
+                // Step 3: Update the rental in the database
+                await _repo.UpdateRentalOverdueStatus(rental);
+            }
         }
 
     }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Trail_Milestone2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f778815bfda5a2f62f0cb12db8cd537cfa685dfe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69d24993c8c65f8a5a62053d5b1b62642f88c0f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Trail_Milestone2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Trail_Milestone2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

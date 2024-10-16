@@ -42,15 +42,21 @@ namespace Trail_Milestone2.Controllers
             
         }
 
-        [HttpGet("OverdueRentals")]
-        public IActionResult GetAndMarkOverdueRentals()
+        [HttpPost("UpdateOverdueRentals")]
+        public async Task<IActionResult> UpdateOverdueRentals()
         {
-            var overdueRentals = _service.GetAndMarkOverdueRentals();
-            if (overdueRentals == null || !overdueRentals.Any())
+            try
             {
-                return NotFound("No overdue rentals found.");
+                // Call the service method to update overdue rentals
+                await _service.UpdateOverdueRentals();
+
+                return Ok(new { Message = "Overdue rentals updated successfully." });
             }
-            return Ok(overdueRentals);
+            catch (Exception ex)
+            {
+                // Handle any errors and return a BadRequest with the error message
+                return BadRequest(new { Error = ex.Message });
+            }
         }
 
     }

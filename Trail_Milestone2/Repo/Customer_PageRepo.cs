@@ -96,48 +96,54 @@ namespace Trail_Milestone2.Repo
         }
 
         //Overdue
-        public List<Rental> GetAndMarkOverdueRentals()
+        public async Task<List<Rental>> GetRentalsToBeMarkedOverdue()
         {
             var overdueRentals = new List<Rental>();
 
             using (var connection = new SqlConnection(_connectionstring))
             {
-                string query = "SELECT * FROM Rental WHERE ReturnDate IS NULL AND DATEDIFF(hour, RentalDate, GETDATE()) > 24";
+                await connection.OpenAsync();
 
-                string updateQuery = "UPDATE Rental SET RentalStatus = 'Overdue', OverdueStatus = 1 WHERE RentalId = @RentalId";
+                var cmd = new SqlCommand("SELECT * FROM Rental WHERE DATEDIFF(HOUR, RentalDate, GETDATE()) >= 24 AND OverdueStatus = 0", connection);
 
-                using (var command = new SqlCommand(query, connection))
+                using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    connection.Open();
-                    using (var reader = command.ExecuteReader())
+                    while (await reader.ReadAsync())
                     {
-                        while (reader.Read())
+                        var rental = new Rental
                         {
-                            var rental = new Rental
-                            {
-                                RentalId = (Guid)reader["RentalId"],
-                                MotorbikeId = (Guid)reader["MotorbikeId"],
-                                CustomerId = (Guid)reader["CustomerId"],
-                                RentalDate = (DateTime)reader["RentalDate"],
-                                ReturnDate = reader["ReturnDate"] as DateTime?,
-                                OverdueStatus = true,
-                                RentalStatus = "Overdue" // Automatically mark as overdue
-                            };
-                            overdueRentals.Add(rental);
-
-                            // Update the status to 'Overdue' in the database
-                            using (var updateCommand = new SqlCommand(updateQuery, connection))
-                            {
-                                updateCommand.Parameters.AddWithValue("@RentalId", rental.RentalId);
-                                updateCommand.ExecuteNonQuery();
-                            }
-                        }
+                            RentalId = reader.GetGuid(0),
+                            MotorbikeId = reader.GetGuid(1),
+                            CustomerId = reader.GetGuid(2),
+                            RentalDate = reader.GetDateTime(3),
+                            ReturnDate = reader.IsDBNull(4) ? (DateTime?)null : reader.GetDateTime(4),
+                            OverdueStatus = reader.GetBoolean(5),
+                            RentalStatus = reader.GetString(6),
+                        };
+                        overdueRentals.Add(rental);
                     }
                 }
             }
 
             return overdueRentals;
         }
+
+        public async Task UpdateRentalOverdueStatus(Rental rental)
+        {
+            using (var connection = new SqlConnection(_connectionstring))
+            {
+                await connection.OpenAsync();
+
+                // Update the OverdueStatus to true for the given rental
+                var cmd = new SqlCommand("UPDATE Rental SET OverdueStatus = 1 WHERE RentalId = @rentalId", connection);
+
+                cmd.Parameters.AddWithValue("@rentalId", rental.RentalId);
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
+
 
 
     }

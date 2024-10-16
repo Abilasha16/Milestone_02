@@ -7,6 +7,7 @@ namespace Trail_Milestone2.IRepo
         Task<Customer> CustomerRegister(Customer customer);
         Task<bool> IsBikeAvailable(Guid motorbikeid);
         Task<Rental> RentBike(Rental rental);
-        List<Rental> GetAndMarkOverdueRentals();
+        Task<List<Rental>> GetRentalsToBeMarkedOverdue();
+        Task UpdateRentalOverdueStatus(Rental rental);
     }
 }

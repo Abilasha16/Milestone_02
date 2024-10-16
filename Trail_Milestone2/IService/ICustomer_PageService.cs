@@ -8,6 +8,7 @@ namespace Trail_Milestone2.IService
     {
         Task<CustomerResponse> CustomerRegister(CustomerReguest customerReguest);
         Task<RentalResponse> RentBike(RentalRequest rentalRequest);
-        List<Rental> GetAndMarkOverdueRentals();
+        Task UpdateOverdueRentals();
+
     }
 }
